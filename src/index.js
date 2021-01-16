@@ -4,21 +4,26 @@ import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import { BrowserRouter } from 'react-router-dom'
 
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import adminPanelReducer from './store/reducers/adminPanel';
+import homepageReducer from './store/reducers/homepageReducer';
 
 const rootReducer = combineReducers({
-  adminPanel: adminPanelReducer
+  adminPanel: adminPanelReducer,
+  homepage: homepageReducer
 })
 
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
+      <App />
+    </BrowserRouter>
   </Provider>,
   document.getElementById('root')
 );

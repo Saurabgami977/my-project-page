@@ -10,6 +10,7 @@ const initialState = {
         description: '',
         toolsUsed: [],
         password: null,
+        image: '',
     },
 
 }
@@ -35,6 +36,7 @@ const reducer = (state = initialState, action) => {
                     description: '',
                     toolsUsed: [],
                     password: null,
+                    image: '',
                 }
             }
         default: return state

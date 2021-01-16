@@ -8,7 +8,7 @@ import React from 'react';
 const useStyles = makeStyles((theme) => ({
     formControl: {
         margin: theme.spacing(1),
-        minWidth: 220,
+        minWidth: '95%',
     },
     selectEmpty: {
         marginTop: theme.spacing(2),
@@ -17,12 +17,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SimpleSelect(props) {
     const classes = useStyles();
-    // const [age, setAge] = React.useState('');
-
-    // const handleChange = (event) => {
-    //     setAge(event.target.value);
-    // };
-
     return (
         <div>
             <FormControl className={classes.formControl}>

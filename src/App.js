@@ -1,16 +1,19 @@
+import { Route, Switch } from 'react-router-dom';
 import './App.css';
-import axios from './axios';
-import AdminPanel from './Components/Admin/AdminPanel';
+
+import AdminPanel from './Containers/Admin/AdminPanel';
+import Homepage from './Containers/Homepage/Homepage';
+import Navbar from './Components/Navbar/Navbar'
 
 function App() {
-  // {
-  //   axios.get('/projects/Advanced.json')
-  //     .then(res => console.log(res.data))
-  // }
   return (
     <div className="App">
-      <AdminPanel />
-    </div>
+      <Route path="/" component={Navbar} />
+      <Switch>
+        <Route path="/" exact component={Homepage} />
+        <Route path="/admin" exact component={AdminPanel} />
+      </Switch>
+    </div >
   );
 }
 

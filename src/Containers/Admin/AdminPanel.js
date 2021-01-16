@@ -2,9 +2,10 @@ import { Button } from '@material-ui/core'
 import React from 'react';
 import { connect } from 'react-redux'
 
-import Input from '../UI/Input/Input'
-import SimpleSelect from '../UI/Select/Select';
+import Input from '../../Components/UI/Input/Input'
+import SimpleSelect from '../../Components/UI/Select/Select';
 import * as actions from '../../store/actions/index';
+import * as classes from './AdminPanel.module.css';
 
 function AdminPanel(props) {
 
@@ -13,18 +14,22 @@ function AdminPanel(props) {
     }
 
     return (
-        <form onSubmit={(e) => {
-            e.preventDefault();
-            props.onSubmit(props.inputState);
-        }}>
+        <form
+            className={classes.Form}
+            onSubmit={(e) => {
+                e.preventDefault();
+                props.onSubmit(props.inputState);
+            }}
+        >
             <SimpleSelect value={props.inputState.select} clicked={(e) => handleChange(e.target.name, e.target.value)} name="select" />
             <Input value={props.inputState.name} clicked={(e) => handleChange(e.target.name, e.target.value)} name="name" label="Project Name" />
             <Input value={props.inputState.github} clicked={(e) => handleChange(e.target.name, e.target.value)} name="github" label="Github" />
             <Input value={props.inputState.liveDemo} clicked={(e) => handleChange(e.target.name, e.target.value)} name="liveDemo" label="Live Demo" />
+            <Input value={props.inputState.image} clicked={(e) => handleChange(e.target.name, e.target.value)} name="image" label="Image URL" />
             <Input value={props.inputState.description} clicked={(e) => handleChange(e.target.name, e.target.value)} name="description" label="Description" multiline />
             <Input value={props.inputState.toolsUsed} clicked={(e) => handleChange(e.target.name, e.target.value)} name="toolsUsed" label="Tools used" multiline />
             <Input type='password' value={props.inputState.password} clicked={(e) => handleChange(e.target.name, e.target.value)} name="password" label="Password" />
-            <Button type='submit'>Submit</Button>
+            <Button fullWidth variant="contained" color="primary" type='submit'>Submit</Button>
         </form>
     )
 }
