@@ -41,10 +41,10 @@ export default function MediaCard(props) {
             </CardActionArea>
             <CardActions>
                 <Button size="small" color="primary">
-                    <a href={props.github}>Github</a>
+                    <a target="__blank" href={props.github}>Github</a>
                 </Button>
                 <Button size="small" color="primary">
-                    <a href={props.liveDemo}>Live Demo</a>
+                    <a target="__blank" href={props.liveDemo}>Live Demo</a>
                 </Button>
             </CardActions>
         </Card>

@@ -3,9 +3,9 @@ import { useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import * as actions from '../../store/actions/index';
-import Card from '../../Components/Card/Card'
+import Card from '../../Components/Card/Card';
 import { Grid } from '@material-ui/core';
-import classes from './Homepage.module.css'
+import classes from './Homepage.module.css';
 
 function Homepage(props) {
     useEffect(() => {
@@ -13,8 +13,6 @@ function Homepage(props) {
     }, [])
 
     let myProjects = [];
-    // let basic = Object.keys(props.projects.basic);
-    // let fun = Object.keys(props.projects.fun);
     for (const property in props.projects) {
         for (const keys in props.projects[property]) {
             myProjects.push(props.projects[property][keys])
@@ -31,39 +29,56 @@ function Homepage(props) {
                     <h1 style={{ marginBottom: '20px' }}>Advance Projects:</h1>
                 </Grid>
                 {
-                    advanced.map((project, index) => (
-                        <Grid item xs={12} lg={3} sm={6} md={4} key={index}>
-                            <Card
-                                name={project.name}
-                                description={project.description}
-                                github={project.github}
-                                liveDemo={project.liveDemo}
-                                image={project.image}
-                            />
-                        </Grid>
-                    ))
+                    advanced.length ?
+                        advanced.map((project, index) => (
+                            <Grid item xs={12} lg={3} sm={6} md={4} key={index}>
+                                <Card
+                                    name={project.name}
+                                    description={project.description}
+                                    github={project.github}
+                                    liveDemo={project.liveDemo}
+                                    image={project.image}
+                                />
+                            </Grid>
+                        )) : <p>No advance projects!!!</p>
                 }
                 <Grid item xs={12}>
                     <hr />
                     <h1>Basic Projects:</h1>
                 </Grid>
                 {
-                    basic.map((project, index) => (
-                        <Grid key={index} item xs={12} lg={3} sm={6} md={4}>
-                            <Card
-                                name={project.name}
-                                description={project.description}
-                                github={project.github}
-                                liveDemo={project.liveDemo}
-                                image={project.image}
-                            />
-                        </Grid>
-                    ))
+                    basic.length ?
+                        basic.map((project, index) => (
+                            <Grid key={index} item xs={12} lg={3} sm={6} md={4}>
+                                <Card
+                                    name={project.name}
+                                    description={project.description}
+                                    github={project.github}
+                                    liveDemo={project.liveDemo}
+                                    image={project.image}
+                                />
+                            </Grid>
+                        )) : <p>No Basic Projects</p>
                 }
                 <Grid className={classes.section} item xs={12}>
                     <hr />
                     <h1>Fun Projects:</h1>
                 </Grid>
+                {
+                    fun.length ?
+                        fun.map((project, index) => (
+                            <Grid key={index} item xs={12} lg={3} sm={6} md={4}>
+                                <Card
+                                    name={project.name}
+                                    description={project.description}
+                                    github={project.github}
+                                    liveDemo={project.liveDemo}
+                                    image={project.image}
+                                />
+                            </Grid>
+                        ))
+                        : <p>No Fun Projects</p>
+                }
             </Grid>
         </div >
     )
