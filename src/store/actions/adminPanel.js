@@ -23,6 +23,7 @@ export const saveData = (data) => {
                     dispatch(sendDataSuccess())
                 })
         } : {
-            type: actionTypes.SEND_DATA_SUCCESS
+            type: actionTypes.SEND_DATA_SUCCESS,
+            // dispatch(alert('Wrong Password!!!'))
         };
 }

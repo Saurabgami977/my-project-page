@@ -26,13 +26,30 @@ function Homepage(props) {
 
     return (
         <div>
-            <Grid style={{ padding: '30px' }} container xs={12}>
+            <Grid style={{ padding: '30px' }} container >
                 <Grid item xs={12}>
                     <h1 style={{ marginBottom: '20px' }}>Advance Projects:</h1>
                 </Grid>
                 {
-                    advanced.map(project => (
-                        <Grid xs={12} lg={3} sm={6} md={4}>
+                    advanced.map((project, index) => (
+                        <Grid item xs={12} lg={3} sm={6} md={4} key={index}>
+                            <Card
+                                name={project.name}
+                                description={project.description}
+                                github={project.github}
+                                liveDemo={project.liveDemo}
+                                image={project.image}
+                            />
+                        </Grid>
+                    ))
+                }
+                <Grid item xs={12}>
+                    <hr />
+                    <h1>Basic Projects:</h1>
+                </Grid>
+                {
+                    basic.map((project, index) => (
+                        <Grid key={index} item xs={12} lg={3} sm={6} md={4}>
                             <Card
                                 name={project.name}
                                 description={project.description}
@@ -45,14 +62,10 @@ function Homepage(props) {
                 }
                 <Grid className={classes.section} item xs={12}>
                     <hr />
-                    <h1  >Basic Projects:</h1>
-                </Grid>
-                <Grid className={classes.section}>
-                    <hr />
-                    <h1  >Fun Projects:</h1>
+                    <h1>Fun Projects:</h1>
                 </Grid>
             </Grid>
-        </div>
+        </div >
     )
 }
 
