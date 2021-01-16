@@ -15,13 +15,13 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function SimpleSelect() {
+export default function SimpleSelect(props) {
     const classes = useStyles();
-    const [age, setAge] = React.useState('');
+    // const [age, setAge] = React.useState('');
 
-    const handleChange = (event) => {
-        setAge(event.target.value);
-    };
+    // const handleChange = (event) => {
+    //     setAge(event.target.value);
+    // };
 
     return (
         <div>
@@ -30,8 +30,9 @@ export default function SimpleSelect() {
                 <Select
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
-                    value={age}
-                    onChange={handleChange}
+                    value={props.value}
+                    onChange={props.clicked}
+                    name={props.name}
                 >
                     <MenuItem value='advanced'>Advanced</MenuItem>
                     <MenuItem value='fun'>Fun</MenuItem>
